@@ -1,4 +1,10 @@
+asgiref==3.2.5
 Django==3.0.4
 django-crispy-forms==1.9.0
-numpy
-sklearn
+joblib==0.14.1
+numpy==1.18.1
+pytz==2019.3
+scikit-learn==0.22.2.post1
+scipy==1.4.1
+sklearn==0.0
+sqlparse==0.3.1
