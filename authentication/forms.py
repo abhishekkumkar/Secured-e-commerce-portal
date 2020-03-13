@@ -22,5 +22,11 @@ class EditProfileForm(UserChangeForm):
         fields = (
             'first_name',
             'last_name',
+            'username',
             'email'
         )
+        exclude = ('password',)
+    def __init__(self, *args, **kwargs): 
+        super(EditProfileForm, self).__init__(*args, **kwargs)                       
+        self.fields['email'].disabled = True
+        self.fields['username'].disabled = True

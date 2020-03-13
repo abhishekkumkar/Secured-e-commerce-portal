@@ -14,6 +14,8 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.core.mail import EmailMessage
+from twilio.rest import Client
+from django.conf import settings 
 
 
 def home(request):
@@ -75,6 +77,16 @@ def edit_profile(request):
             'form':form,
         }
     return render(request,'registration/edit_profile.html',context)
+
+def broadcast_sms(request):
+    message_to_broadcast = ("Abhishek Kumkar sent you a test message bro")
+    client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
+    for recipient in settings.SMS_BROADCAST_TO_NUMBERS:
+        if recipient:
+            client.messages.create(to=recipient,
+                                   from_=settings.TWILIO_NUMBER,
+                                   body=message_to_broadcast)
+    return HttpResponse("messages sent!", 200)
 
 @login_required
 def secret_page(request):

@@ -113,6 +113,17 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
+
+SMS_BROADCAST_TO_NUMBERS = [ 
+    "+919404242014",
+]
+
+# Twilio credentials and phone number
+TWILIO_ACCOUNT_SID='ACb6f97596b2656a0f7fec3fae482b1561' # obtained from twilio.com/console
+TWILIO_AUTH_TOKEN='5a1c9adcffba5f1173a1fc2f05d24e64' # also obtained from twilio.com/console
+TWILIO_NUMBER='+19549518885' # use the number you received when signing up or buy a new number
+
+
 MODELS = os.path.join(BASE_DIR, 'regressor/models')
 
 STATIC_URL = '/static/'
